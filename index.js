@@ -69,48 +69,35 @@ function editStudent(classID, studentID) {
 
 function renderSchoolTemplate() {
   // format and render school data
-  console.log("School Classes:");
+  console.log(" School Classes:");
   let totalStudents = 0;
   console.log("------------------ ");
   for (let classObj of school) {
     totalStudents += classObj.students.length;
     if (classObj.students.length === 0) {
       console.log(
-        ` ${classObj.name} - (class ID: ${school.indexOf(classObj) + 1})`
+        ` ${classObj.name} - (class ID: ${school.indexOf(classObj) + 1}):`
       );
-      console.log(`  The class is empty `);
+      console.log(`   The class is empty`);
       console.log("********************************************");
       continue;
     }
     console.log(
-      ` ${classObj.name} - (class ID: ${school.indexOf(classObj) + 1})`
+      ` ${classObj.name} - (class ID: ${school.indexOf(classObj) + 1}):`
     );
-    console.log(`  `);
+    for (let item of classObj.students) {
+      console.log(
+        `  ${classObj.students.indexOf(item) + 1}- ${item.name}, ${
+          item.email
+        }, ${item.city} - (student ID: ${classObj.students.indexOf(item) + 1}) `
+      );
+    }
     console.log("********************************************");
   }
 
   console.log(
     `  Total Classes ${school.length}, total students ${totalStudents}`
   );
-
-  /**
-
- School Classes: 
------------------- 
- FbW1 - (class ID: 1): 
-  1- Alex, alex@yahoo.com, Berlin - (student ID: 1).
-  2- Max, max@yahoo.com, Hamburg - (student ID: 2).
-******************************************** 
- FbW2 - (class ID: 2): 
-  1- Jon, jon@yahoo.com, Berlin - (student ID: 1).
-  2- Pilar, pilar@yahoo.com, Berlin - (student ID: 2).
-******************************************** 
- FbW3 - (class ID: 3): 
-   The class is empty 
-******************************************** 
-  Total Classes 3, total students 4
-
-   */
 }
 
 renderSchoolTemplate();
